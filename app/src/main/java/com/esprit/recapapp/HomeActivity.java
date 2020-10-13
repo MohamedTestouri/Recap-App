@@ -1,6 +1,7 @@
 package com.esprit.recapapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -28,5 +29,13 @@ public class HomeActivity extends AppCompatActivity {
         fullNameTextView.setText(extras.getString("firstName")+" "+extras.getString("LastName"));
         emailTextView.setText(extras.getString("email"));
         phoneTextView.setText(extras.getString("phone"));
+        fragment1Button.setOnClickListener(l->showFragment(new FragmentOne()));
+        fragment2Button.setOnClickListener(l->showFragment(new FragmentTwo()));
+
+    }
+    private void showFragment(Fragment fragment){
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragmentContainer, fragment)
+                .commit();
     }
 }

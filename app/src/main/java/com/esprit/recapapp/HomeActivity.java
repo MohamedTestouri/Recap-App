@@ -15,7 +15,9 @@ public class HomeActivity extends AppCompatActivity {
     private Button fragment1Button;
     private Button updateButton;
     private Button fragment2Button;
-    private Bundle extras = getIntent().getExtras();
+    private String fullName;
+    private Bundle extras = this.getIntent().getExtras();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,14 +28,16 @@ public class HomeActivity extends AppCompatActivity {
         fragment1Button = findViewById(R.id.buttonFragment1);
         fragment2Button = findViewById(R.id.buttonFragment2);
         updateButton = findViewById(R.id.buttonUpdate);
-        fullNameTextView.setText(extras.getString("firstName")+" "+extras.getString("LastName"));
+        fullName = extras.getString("firstName") + " " + extras.getString("LastName");
+        fullNameTextView.setText(fullName);
         emailTextView.setText(extras.getString("email"));
         phoneTextView.setText(extras.getString("phone"));
-        fragment1Button.setOnClickListener(l->showFragment(new FragmentOne()));
-        fragment2Button.setOnClickListener(l->showFragment(new FragmentTwo()));
+        fragment1Button.setOnClickListener(l -> showFragment(new FragmentOne()));
+        fragment2Button.setOnClickListener(l -> showFragment(new FragmentTwo()));
 
     }
-    private void showFragment(Fragment fragment){
+
+    private void showFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragmentContainer, fragment)
                 .commit();

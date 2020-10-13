@@ -29,15 +29,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void onClickNext() {
         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-        if (!firstNameEditText.getText().toString().isEmpty() && !lastNameEditText.getText().toString().isEmpty() && !emailEditText.getText().toString().isEmpty() && !phoneEditText.getText().toString().isEmpty()) {
-            intent.putExtra("firstName", firstNameEditText.getText().toString());
-            intent.putExtra("lastName", lastNameEditText.getText().toString());
-            intent.putExtra("email", emailEditText.getText().toString());
-            intent.putExtra("phone", phoneEditText.getText().toString());
-            startActivity(intent);
-        } else {
-            Toast.makeText(MainActivity.this, "Fill in your information!", Toast.LENGTH_LONG).show();
-        }
+        intent.putExtra("firstName", firstNameEditText.getText().toString());
+        intent.putExtra("lastName", lastNameEditText.getText().toString());
+        intent.putExtra("email", emailEditText.getText().toString());
+        intent.putExtra("phone", phoneEditText.getText().toString());
+        startActivity(intent);
+
     }
 
 }

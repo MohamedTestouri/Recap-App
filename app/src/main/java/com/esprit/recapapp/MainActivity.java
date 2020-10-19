@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void onClickNext() {
         Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+
         intent.putExtra("firstName", firstNameEditText.getText().toString());
         intent.putExtra("lastName", lastNameEditText.getText().toString());
         intent.putExtra("email", emailEditText.getText().toString());

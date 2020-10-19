@@ -1,5 +1,6 @@
 package com.esprit.recapapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,13 +17,15 @@ public class FragmentTwo extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        //return super.onCreateView(inflater, container, savedInstanceState);
         View rootView;
         rootView = inflater.inflate(R.layout.frag_two, container, false);
+        callButton = rootView.findViewById(R.id.buttonCamera);
+        callButton.setOnClickListener(l -> callNumber());
         return rootView;
     }
 
     private void callNumber() {
-
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        startActivity(intent);
     }
 }

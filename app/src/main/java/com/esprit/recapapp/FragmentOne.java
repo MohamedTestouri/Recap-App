@@ -1,5 +1,6 @@
 package com.esprit.recapapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,10 +20,13 @@ public class FragmentOne extends Fragment {
 //        return super.onCreateView(inflater, container, savedInstanceState);
         View rootView;
         rootView = inflater.inflate(R.layout.frag_one, container, false);
-        return  rootView;
+        cameraButton = rootView.findViewById(R.id.buttonCamera);
+        cameraButton.setOnClickListener(l -> openCamera());
+        return rootView;
     }
 
-    private void openCamera(){
-
+    private void openCamera() {
+        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        startActivity(intent);
     }
 }

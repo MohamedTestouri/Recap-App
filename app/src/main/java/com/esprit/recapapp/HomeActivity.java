@@ -3,6 +3,7 @@ package com.esprit.recapapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +17,6 @@ public class HomeActivity extends AppCompatActivity {
     private Button updateButton;
     private Button fragment2Button;
     private String fullName;
-    private Bundle extras = this.getIntent().getExtras();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +28,21 @@ public class HomeActivity extends AppCompatActivity {
         fragment1Button = findViewById(R.id.buttonFragment1);
         fragment2Button = findViewById(R.id.buttonFragment2);
         updateButton = findViewById(R.id.buttonUpdate);
-        fullName = extras.getString("firstName") + " " + extras.getString("LastName");
+        fullName = getIntent().getStringExtra("firstName") + " " + getIntent().getStringExtra("LastName");
         fullNameTextView.setText(fullName);
-        emailTextView.setText(extras.getString("email"));
-        phoneTextView.setText(extras.getString("phone"));
+        emailTextView.setText(getIntent().getStringExtra("email"));
+        phoneTextView.setText(getIntent().getStringExtra("phone"));
         fragment1Button.setOnClickListener(l -> showFragment(new FragmentOne()));
         fragment2Button.setOnClickListener(l -> showFragment(new FragmentTwo()));
+        updateButton.setOnClickListener(l -> update());
 
+    }
+
+    private void update() {
+        Intent intent = new Intent(HomeActivity.this, UpdateProfileActivity.class);
+        intent.putExtra("email", emailTextView.getText().toString());
+        intent.putExtra("phone", phoneTextView.getText().toString());
+        startActivity(intent);
     }
 
     private void showFragment(Fragment fragment) {

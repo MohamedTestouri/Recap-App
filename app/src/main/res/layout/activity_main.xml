@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,7 +21,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="First Name"
+        android:hint="First Name"
         android:layout_margin="8dp"
         android:layout_weight="0.5"/>
 
@@ -32,7 +31,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Last Name"
+        android:hint="Last Name"
         android:layout_margin="8dp"
         android:layout_weight="0.5"/>
 
@@ -42,7 +41,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress"
-        android:text="E-mail"
+        android:hint="E-mail"
         android:layout_margin="8dp"
         android:layout_weight="0.5"/>
 
@@ -52,7 +51,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="phone"
-        android:text="Phone Number"
+        android:hint="Phone Number"
         android:layout_margin="8dp"
         android:layout_weight="0.5"/>
 

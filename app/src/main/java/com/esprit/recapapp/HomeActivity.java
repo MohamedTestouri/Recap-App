@@ -10,28 +10,27 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
-    private TextView fullNameTextView;
+    private TextView firstNameTextView;
+    private TextView lastNameTextView;
     private TextView emailTextView;
     private TextView phoneTextView;
     private Button fragment1Button;
     private Button updateButton;
     private Button fragment2Button;
-    private String firstName;
-    private String lastName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        fullNameTextView = findViewById(R.id.textViewFullName);
+        firstNameTextView = findViewById(R.id.textViewFirstName);
+        lastNameTextView = findViewById(R.id.textViewLastName);
         emailTextView = findViewById(R.id.textViewEmail);
         phoneTextView = findViewById(R.id.textViewPhone);
         fragment1Button = findViewById(R.id.buttonFragment1);
         fragment2Button = findViewById(R.id.buttonFragment2);
         updateButton = findViewById(R.id.buttonUpdate);
-        firstName = getIntent().getStringExtra("firstName");
-        lastName = getIntent().getStringExtra("LastName");
-        fullNameTextView.setText(firstName + "" + lastName);
+        firstNameTextView.setText(getIntent().getStringExtra("firstName"));
+        lastNameTextView.setText(getIntent().getStringExtra("lastName"));
         emailTextView.setText(getIntent().getStringExtra("email"));
         phoneTextView.setText(getIntent().getStringExtra("phone"));
         fragment1Button.setOnClickListener(l -> showFragment(new FragmentOne()));
@@ -43,8 +42,8 @@ public class HomeActivity extends AppCompatActivity {
     private void update() {
         Intent intent = new Intent(HomeActivity.this, UpdateProfileActivity.class);
 
-        intent.putExtra("firstName", firstName);
-        intent.putExtra("lastName", lastName);
+        intent.putExtra("firstName", firstNameTextView.getText().toString());
+        intent.putExtra("lastName", lastNameTextView.getText().toString());
         intent.putExtra("email", emailTextView.getText().toString());
         intent.putExtra("phone", phoneTextView.getText().toString());
         startActivity(intent);

@@ -19,7 +19,7 @@ public class FragmentTwo extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView;
         rootView = inflater.inflate(R.layout.frag_two, container, false);
-        callButton = rootView.findViewById(R.id.buttonCamera);
+        callButton = rootView.findViewById(R.id.buttonCall);
         callButton.setOnClickListener(l -> callNumber());
         return rootView;
     }

@@ -25,7 +25,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
         updateButton = findViewById(R.id.buttonUpdate);
         updateButton.setOnClickListener(l -> update());
         firstNameEditText.setText(getIntent().getStringExtra("firstName"));
-        firstNameEditText.setText(getIntent().getStringExtra("lastName"));
+        lastNameEditText.setText(getIntent().getStringExtra("lastName"));
         emailEditText.setText(getIntent().getStringExtra("email"));
         phoneEditText.setText(getIntent().getStringExtra("phone"));
     }

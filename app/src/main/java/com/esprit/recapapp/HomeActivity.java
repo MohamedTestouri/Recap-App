@@ -16,7 +16,8 @@ public class HomeActivity extends AppCompatActivity {
     private Button fragment1Button;
     private Button updateButton;
     private Button fragment2Button;
-    private String fullName;
+    private String firstName;
+    private String lastName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +29,9 @@ public class HomeActivity extends AppCompatActivity {
         fragment1Button = findViewById(R.id.buttonFragment1);
         fragment2Button = findViewById(R.id.buttonFragment2);
         updateButton = findViewById(R.id.buttonUpdate);
-        fullName = getIntent().getStringExtra("firstName") + " " + getIntent().getStringExtra("LastName");
-        fullNameTextView.setText(fullName);
+        firstName = getIntent().getStringExtra("firstName");
+        lastName = getIntent().getStringExtra("LastName");
+        fullNameTextView.setText(firstName + "" + lastName);
         emailTextView.setText(getIntent().getStringExtra("email"));
         phoneTextView.setText(getIntent().getStringExtra("phone"));
         fragment1Button.setOnClickListener(l -> showFragment(new FragmentOne()));
@@ -40,6 +42,9 @@ public class HomeActivity extends AppCompatActivity {
 
     private void update() {
         Intent intent = new Intent(HomeActivity.this, UpdateProfileActivity.class);
+
+        intent.putExtra("firstName", firstName);
+        intent.putExtra("lastName", lastName);
         intent.putExtra("email", emailTextView.getText().toString());
         intent.putExtra("phone", phoneTextView.getText().toString());
         startActivity(intent);
